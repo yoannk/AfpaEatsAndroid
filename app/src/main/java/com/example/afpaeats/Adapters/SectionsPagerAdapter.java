@@ -1,4 +1,4 @@
-package com.example.afpaeats.ui.main;
+package com.example.afpaeats.Adapters;
 
 import android.content.Context;
 
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.afpaeats.Fragments.CuisinesFragment;
+import com.example.afpaeats.Fragments.RestosFragment;
 import com.example.afpaeats.R;
 
 /**
@@ -29,7 +31,21 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        Fragment fragment = null;
+
+        switch (position) {
+            case 1:
+                fragment = RestosFragment.newInstance("", "");
+                break;
+            case 2:
+                fragment = CuisinesFragment.newInstance("", "");
+                break;
+            default:
+                fragment = RestosFragment.newInstance("", "");
+                break;
+        }
+
+        return fragment;
     }
 
     @Nullable

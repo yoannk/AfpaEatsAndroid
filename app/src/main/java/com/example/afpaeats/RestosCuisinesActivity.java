@@ -7,7 +7,7 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.afpaeats.ui.main.SectionsPagerAdapter;
+import com.example.afpaeats.Adapters.SectionsPagerAdapter;
 
 public class RestosCuisinesActivity extends AppCompatActivity {
 
