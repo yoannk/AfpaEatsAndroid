@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PermissionsActivity"></activity>
+        <activity
+            android:name=".RestosCuisinesActivity"
+            android:label="@string/title_activity_restos_cuisines"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".PermissionsActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
