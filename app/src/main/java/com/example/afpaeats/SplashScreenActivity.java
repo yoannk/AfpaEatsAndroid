@@ -17,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
     }
 
-    private class SleepTask extends AsyncTask<String,String,String>
+    private class sleepTask extends AsyncTask<String,String,String>
     {
         @Override
         protected String doInBackground(String... voids) {

@@ -20,11 +20,22 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
-    private final Context mContext;
+    private final Context _context;
+
+    String _typeCuisinesJson;
+    String _restosJson;
+
+    public void setTypeCuisinesJson(String typeCuisinesJson) {
+        this._typeCuisinesJson = typeCuisinesJson;
+    }
+
+    public void setRestosJson(String restosJson) {
+        this._restosJson = restosJson;
+    }
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
-        mContext = context;
+        _context = context;
     }
 
     @Override
@@ -35,13 +46,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 1:
-                fragment = RestosFragment.newInstance("", "");
+                fragment = RestosFragment.newInstance(_restosJson, "");
                 break;
             case 2:
-                fragment = CuisinesFragment.newInstance("", "");
+                fragment = CuisinesFragment.newInstance(_typeCuisinesJson);
                 break;
             default:
-                fragment = RestosFragment.newInstance("", "");
+                fragment = RestosFragment.newInstance(_restosJson, "");
                 break;
         }
 
@@ -51,7 +62,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        return _context.getResources().getString(TAB_TITLES[position]);
     }
 
     @Override

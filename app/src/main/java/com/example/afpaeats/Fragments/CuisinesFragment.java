@@ -1,51 +1,45 @@
 package com.example.afpaeats.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.afpaeats.Adapters.CuisinesAdapter;
+import com.example.afpaeats.Entities.TypeCuisines;
 import com.example.afpaeats.R;
+import com.google.gson.Gson;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CuisinesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CuisinesFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    Context _context;
+    static TypeCuisines _typeCuisines;
 
     public CuisinesFragment() {
         // Required empty public constructor
     }
 
-    public static CuisinesFragment newInstance(String param1, String param2) {
+    public static CuisinesFragment newInstance(String typeCuisinesJson) {
         CuisinesFragment fragment = new CuisinesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
+        Gson gson = new Gson();
+
+        _typeCuisines = gson.fromJson(typeCuisinesJson, TypeCuisines.class);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        _context = getContext();
     }
 
     @Override
@@ -53,6 +47,22 @@ public class CuisinesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cuisines, container, false);
         RecyclerView rvwCuisines = view.findViewById(R.id.rvwCuisines);
+
+        //on instancie notre adapter
+        CuisinesAdapter cuisinesAdapter = new CuisinesAdapter(_typeCuisines,_context);
+
+        //la manière dont les adherents doivent s'afficher
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(_context, LinearLayoutManager.VERTICAL, false);
+
+
+        rvwCuisines.setLayoutManager(layoutManager);
+
+        //Effet sur le recyclerView
+        DefaultItemAnimator defaultItemAnimator = new DefaultItemAnimator();
+        rvwCuisines.setItemAnimator(defaultItemAnimator);
+
+        //on passe notre adapter à notre recyclerview
+        rvwCuisines.setAdapter(cuisinesAdapter);
 
         return view;
     }
