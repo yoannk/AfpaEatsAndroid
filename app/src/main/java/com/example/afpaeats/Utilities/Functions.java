@@ -19,7 +19,7 @@ public class Functions {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    public static String callServiceWeb(@Nullable HashMap<String,String> parameters, String methode)
+    public static String callServiceWeb(@Nullable HashMap<String,String> parameters, String methode, int idSw)
     {
         String url= Constants.URL_SW + methode;
         //On instancie notre objet Okhttp

@@ -1,5 +1,6 @@
 package com.example.afpaeats;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -11,10 +12,16 @@ import com.example.afpaeats.Adapters.SectionsPagerAdapter;
 
 public class RestosCuisinesActivity extends AppCompatActivity {
 
+    Context context;
+    SectionsPagerAdapter sectionsPagerAdapter;
+    ViewPager viewPager;
+    TabLayout tabs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restos_cuisines);
+        context = this;
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 
