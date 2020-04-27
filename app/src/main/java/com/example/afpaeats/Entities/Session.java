@@ -22,6 +22,9 @@ public class Session {
     }
 
     public static Panier getPanier() {
+        if (panier == null) {
+            panier = new Panier();
+        }
         return panier;
     }
 
