@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.example.afpaeats.Adapters.CuisinesAdapter;
 import com.example.afpaeats.Entities.TypeCuisines;
 import com.example.afpaeats.R;
+import com.example.afpaeats.Utilities.App;
 import com.google.gson.Gson;
 
 public class CuisinesFragment extends Fragment {
@@ -49,7 +50,7 @@ public class CuisinesFragment extends Fragment {
         RecyclerView rvwCuisines = view.findViewById(R.id.rvwCuisines);
 
         //on instancie notre adapter
-        CuisinesAdapter cuisinesAdapter = new CuisinesAdapter(_typeCuisines,_context);
+        CuisinesAdapter cuisinesAdapter = new CuisinesAdapter(App.getTypeCuisines(),_context);
 
         //la manière dont les adherents doivent s'afficher
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(_context, LinearLayoutManager.VERTICAL, false);
