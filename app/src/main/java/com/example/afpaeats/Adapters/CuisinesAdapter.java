@@ -13,7 +13,7 @@ import com.example.afpaeats.Entities.TypeCuisine;
 import com.example.afpaeats.Entities.TypeCuisines;
 import com.example.afpaeats.R;
 
-public class CuisinesAdapter  extends RecyclerView.Adapter<TypeCuisineHolder> {
+public class CuisinesAdapter extends RecyclerView.Adapter<TypeCuisineHolder> {
 
     //notre liste d'adherents
     TypeCuisines _typeCuisines;
