@@ -12,7 +12,9 @@ package com.example.afpaeats.Adapters;
 
         import com.example.afpaeats.Entities.Produit;
         import com.example.afpaeats.Entities.Produits;
+        import com.example.afpaeats.Entities.Session;
         import com.example.afpaeats.R;
+        import com.example.afpaeats.Utilities.Functions;
 
 public class ProduitsAdapter extends RecyclerView.Adapter<ProduitHolder> {
 
@@ -30,7 +32,7 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitHolder> {
         //on récupére le fichier xml graphique parmi les layouts
         View view = LayoutInflater.from(_context).inflate(R.layout.item_produit,parent,false);
         //on passe notre objet(view) à notre view holder
-        return new ProduitHolder(view);
+        return new ProduitHolder(view, _context);
     }
 
     @Override
@@ -53,7 +55,7 @@ class ProduitHolder extends RecyclerView.ViewHolder {
     Button btnAjouterPanier;
     Produit _produit;
 
-    public ProduitHolder(@NonNull View view) {
+    public ProduitHolder(@NonNull View view, final Context context) {
         super(view);
 
         //on initialise les widgets qui sont dans le layout
@@ -63,7 +65,8 @@ class ProduitHolder extends RecyclerView.ViewHolder {
         btnAjouterPanier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Session.getPanier().add(_produit);
+                Functions.getToast(context, "Produit ajouté");
             }
         });
     }
