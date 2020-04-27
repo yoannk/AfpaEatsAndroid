@@ -1,10 +1,12 @@
 package com.example.afpaeats.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.afpaeats.Entities.Restaurant;
 import com.example.afpaeats.Entities.Restaurants;
 import com.example.afpaeats.R;
+import com.example.afpaeats.RestoActivity;
+import com.example.afpaeats.Utilities.Constants;
+import com.google.gson.Gson;
 
 public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantHolder> {
 
@@ -36,9 +41,24 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantHolder> {
     @Override
     public void onBindViewHolder(@NonNull RestaurantHolder restaurantHolder, int position) {
         //on recupére un adherent parmi la liste des adherents en fonction de sa position
-        Restaurant restaurant = this._restaurants.get(position);
+        final Restaurant restaurant = this._restaurants.get(position);
         //on passe l'objet adherent a notre viewholder
         restaurantHolder.setRestaurant(restaurant);
+
+        restaurantHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(_context, "hello " + restaurant.getNom(), Toast.LENGTH_SHORT).show();
+
+                Gson gson = new Gson();
+                String restaurantJson = gson.toJson(restaurant);
+
+                Intent intent = new Intent(_context, RestoActivity.class);
+                intent.putExtra(Constants.RESTAURANT_JSON, restaurantJson);
+
+                _context.startActivity(intent);
+            }
+        });
     }
 
     @Override

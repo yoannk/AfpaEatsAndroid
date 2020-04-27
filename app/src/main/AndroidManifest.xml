@@ -11,13 +11,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".RestoActivity"></activity>
         <activity
             android:name=".RestosCuisinesActivity"
             android:label="@string/title_activity_restos_cuisines"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PermissionsActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
